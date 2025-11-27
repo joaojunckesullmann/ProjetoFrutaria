@@ -1,38 +1,13 @@
 package br.com.appFrutaria.model;
 
-public class Fruta {
-    private String nome;
-    private double preco;
-    private int quantidade;
+public class Fruta extends Produto {
+	
     private String tipo;
 
-    public Fruta() {
-        
-        this.nome = "";
-        this.preco = 0.0;
-        this.quantidade = 0;
-        this.tipo = " ";
-        
-    }
-
     public Fruta(String nome, double preco, int quantidade, String tipo) {
-        
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+    	super (nome, preco, quantidade);
         this.tipo = tipo;
     }
-
-    // Getters e Setters
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public double getPreco() { return preco; }
-    public void setPreco(double preco) { this.preco = preco; }
-
-    public int getQuantidade() { return quantidade; }
-    public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
-
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }
 }

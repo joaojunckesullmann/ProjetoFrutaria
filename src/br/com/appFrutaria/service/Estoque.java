@@ -1,60 +1,102 @@
 package br.com.appFrutaria.service;
 
 import java.util.ArrayList;
-import java.util.List;
 import br.com.appFrutaria.model.Fruta;
-import br.com.appFrutaria.view.Atendente;
+import br.com.appFrutaria.model.Verdura;
 
 public class Estoque {
-    private List<Fruta> listaFruta;
 
-    public Estoque() {
-        listaFruta = new ArrayList<>();
+    private ArrayList<Fruta> frutas = new ArrayList<>();
+    private ArrayList<Verdura> verduras = new ArrayList<>();
+
+    // CADASTRO
+    public void cadastrarFruta(Fruta f) {
+        frutas.add(f);
     }
-    public void gerenciarEstoque(int opcao, Atendente atendente) {
-        switch (opcao) {
-            case 1 -> {
-                String nome = atendente.frutaNome();
-                double preco = atendente.frutaPreco();
-                int quantidade = atendente.frutaQuantidade();
-                String tipo = atendente.frutaTipo();
 
-                Fruta fruta = new Fruta(nome, preco, quantidade, tipo);
-                listaFruta.add(fruta);
-                System.out.println("Fruta cadastrada com sucesso!");
-            }
+    public void cadastrarVerdura(Verdura v) {
+        verduras.add(v);
+    }
 
-            case 2 -> {
-                if (listaFruta.isEmpty()) {
-                    System.out.println("Nenhuma fruta cadastrada.");
-                } else {
-                    for (Fruta fruta : listaFruta) {
-                        atendente. vizualizar(fruta);
-                    }
-                }
-            }
+    // LISTAGEM
+    public void listarFrutas() {
+        System.out.println("\n--- FRUTAS ---");
 
-            case 3 -> {
-                String nome = atendente.removerFruta();
-                boolean removido = false;
-
-                for (int i = 0; i < listaFruta.size(); i++) {
-                    if (listaFruta.get(i).getNome().equalsIgnoreCase(nome)) {
-                        listaFruta.remove(i);
-                        removido = true;
-                        break;
-                    }
-                }
-
-                if (removido) {
-                    atendente.vizualizarFrutaRemovida(nome);
-                } else {
-                    atendente.mensagemNaoEncontrado();
-                }
-            }
-
-            case 0 -> System.out.println("Saindo...");
-            default -> System.out.println("Opção inválida!");
+        if (frutas.isEmpty()) {
+            System.out.println("Nenhuma fruta cadastrada.");
+            return;
         }
+
+        for (Fruta f : frutas) {
+            System.out.println("ID: " + f.getId()
+                + " | Nome: " + f.getNome()
+                + " | Preço: " + f.getPreco()
+                + " | Quantidade: " + f.getQuantidade()
+                + " | Tipo: " + f.getTipo());
+        }
+    }
+
+    public void listarVerduras() {
+        System.out.println("\n--- VERDURAS ---");
+
+        if (verduras.isEmpty()) {
+            System.out.println("Nenhuma verdura cadastrada.");
+            return;
+        }
+
+        for (Verdura v : verduras) {
+            System.out.println("ID: " + v.getId()
+                + " | Nome: " + v.getNome()
+                + " | Preço: " + v.getPreco()
+                + " | Quantidade: " + v.getQuantidade()
+                + " | Peso: " + v.getPeso() + "kg");
+        }
+    }
+
+    // PESQUISAR
+    public Fruta pesquisarFruta(String nome) {
+        for (Fruta f : frutas) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                return f;
+            }
+        }
+        return null;
+    }
+
+    public Verdura pesquisarVerdura(String nome) {
+        for (Verdura v : verduras) {
+            if (v.getNome().equalsIgnoreCase(nome)) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    // REMOVER
+    public boolean removerFruta(String nome) {
+        Fruta f = pesquisarFruta(nome);
+        if (f != null) {
+            frutas.remove(f);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removerVerdura(String nome) {
+        Verdura v = pesquisarVerdura(nome);
+        if (v != null) {
+            verduras.remove(v);
+            return true;
+        }
+        return false;
+    }
+
+    // TOTAL
+    public int totalFrutas() {
+        return frutas.size();
+    }
+
+    public int totalVerduras() {
+        return verduras.size();
     }
 }
