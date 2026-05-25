@@ -7,7 +7,7 @@ public class Atendente {
     private Scanner input = new Scanner(System.in);
 
     public void exibirMenu() {
-        System.out.println("\n+======== MENU PRINCIPAL ===========+");
+        System.out.println("\n+======== MENU PRINCIPAL =========+");
         System.out.println("| 1 - Cadastrar fruta---------------|");
         System.out.println("| 2 - Cadastrar Verdura-------------|");
         System.out.println("| 3 - Listar Fruta------------------|");
