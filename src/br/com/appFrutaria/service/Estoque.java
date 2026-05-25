@@ -9,7 +9,6 @@ public class Estoque {
     private ArrayList<Fruta> frutas = new ArrayList<>();
     private ArrayList<Verdura> verduras = new ArrayList<>();
 
-    // CADASTRO
     public void cadastrarFruta(Fruta f) {
         frutas.add(f);
     }
@@ -18,7 +17,6 @@ public class Estoque {
         verduras.add(v);
     }
 
-    // LISTAGEM
     public void listarFrutas() {
         System.out.println("\n--- FRUTAS ---");
 
@@ -53,7 +51,6 @@ public class Estoque {
         }
     }
 
-    // PESQUISAR
     public Fruta pesquisarFruta(String nome) {
         for (Fruta f : frutas) {
             if (f.getNome().equalsIgnoreCase(nome)) {
@@ -72,7 +69,6 @@ public class Estoque {
         return null;
     }
 
-    // REMOVER
     public boolean removerFruta(String nome) {
         Fruta f = pesquisarFruta(nome);
         if (f != null) {
@@ -91,7 +87,6 @@ public class Estoque {
         return false;
     }
 
-    // TOTAL
     public int totalFrutas() {
         return frutas.size();
     }
