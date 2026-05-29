@@ -21,16 +21,16 @@ public class Estoque {
         System.out.println("\n--- FRUTAS ---");
 
         if (frutas.isEmpty()) {
-            System.out.println("Nenhuma fruta cadastrada.");
+            System.out.println("Nenhuma fruta cadastrada!");
             return;
         }
 
-        for (Fruta f : frutas) {
-            System.out.println("ID: " + f.getId()
-                + " | Nome: " + f.getNome()
-                + " | Preço: " + f.getPreco()
-                + " | Quantidade: " + f.getQuantidade()
-                + " | Tipo: " + f.getTipo());
+        for (Fruta fruta : frutas) {
+            System.out.println("ID: " + fruta.getId()
+                + " | Nome: " + fruta.getNome()
+                + " | Preço: " + fruta.getPreco()
+                + " | Quantidade: " + fruta.getQuantidade()
+                + " | Tipo: " + fruta.getTipo());
         }
     }
 
@@ -42,46 +42,46 @@ public class Estoque {
             return;
         }
 
-        for (Verdura v : verduras) {
-            System.out.println("ID: " + v.getId()
-                + " | Nome: " + v.getNome()
-                + " | Preço: " + v.getPreco()
-                + " | Quantidade: " + v.getQuantidade()
-                + " | Peso: " + v.getPeso() + "kg");
+        for (Verdura verdura : verduras) {
+            System.out.println("ID: " + verdura.getId()
+                + " | Nome: " + verdura.getNome()
+                + " | Preço: " + verdura.getPreco()
+                + " | Quantidade: " + verdura.getQuantidade()
+                + " | Peso: " + verdura.getPeso() + "kg");
         }
     }
 
     public Fruta pesquisarFruta(String nome) {
-        for (Fruta f : frutas) {
-            if (f.getNome().equalsIgnoreCase(nome)) {
-                return f;
+        for (Fruta fruta : frutas) {
+            if (fruta.getNome().equalsIgnoreCase(nome)) {
+                return fruta;
             }
         }
         return null;
     }
 
     public Verdura pesquisarVerdura(String nome) {
-        for (Verdura v : verduras) {
-            if (v.getNome().equalsIgnoreCase(nome)) {
-                return v;
+        for (Verdura verdura : verduras) {
+            if (verdura.getNome().equalsIgnoreCase(nome)) {
+                return verdura;
             }
         }
         return null;
     }
 
     public boolean removerFruta(String nome) {
-        Fruta f = pesquisarFruta(nome);
-        if (f != null) {
-            frutas.remove(f);
+        Fruta fruta = pesquisarFruta(nome);
+        if (fruta != null) {
+            frutas.remove(fruta);
             return true;
         }
         return false;
     }
 
     public boolean removerVerdura(String nome) {
-        Verdura v = pesquisarVerdura(nome);
-        if (v != null) {
-            verduras.remove(v);
+        Verdura verdura = pesquisarVerdura(nome);
+        if (verdura != null) {
+            verduras.remove(verdura);
             return true;
         }
         return false;
